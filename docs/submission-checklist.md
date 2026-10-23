@@ -17,8 +17,8 @@
 
 ## Requires account-owner action before deadline
 
-- [ ] Create/publish the GitHub repository and paste its public URL into `SUBMISSION.md`.
-- [ ] Record the product flow using `docs/demo-script.md`.
+- [x] Create/publish the GitHub repository and paste its public URL into `SUBMISSION.md`.
+- [x] Record the product flow using `docs/demo-script.md`.
 - [ ] Upload the video publicly to YouTube or Vimeo and verify its duration is under 3:00.
 - [ ] Join the Devpost hackathon if not already joined.
 - [ ] Create the project and paste the prepared submission sections.

@@ -10,6 +10,9 @@ coverage/
 .quietbridge/
 *.enc.json
 *.log
+docs/assets/demo-recording/
+docs/assets/quietbridge-narration.wav
+docs/assets/quietbridge-demo.mp4
 .DS_Store
 Thumbs.db
 .idea/

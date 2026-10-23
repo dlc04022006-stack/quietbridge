@@ -1,0 +1,21 @@
+QuietBridge is a privacy delivery layer for assistants used in shared spaces. It sits between an Alexa Plus capability and its output channels, deciding what can be spoken, what must move privately, and what must be blocked.
+
+This is the real integration workspace talking to QuietBridge through Model Context Protocol Streamable HTTP. The Alexa, identity, phone, and calendar screens are clearly labelled test adapters. The MCP server, policy engine, expiring handoffs, receipts, deletion, and security controls are production code.
+
+Alice asks for her cardiology appointment while the device is in a shared living room. QuietBridge classifies each returned field and evaluates the audience. The result is private. Alexa says only a neutral sentence, so the doctor, hospital, and appointment time never enter public speech.
+
+The activity panel proves this is not a slideshow: the client performs MCP initialize, tools list, and tools call against the running server.
+
+The protected result is delivered through a short-lived, profile-bound, one-time handoff. First we test the wrong profile, Bob. Access is denied. Then Alice verifies and can open the result. A replay attempt would fail because the token is consumed.
+
+The privacy receipt is content-free. It records the categories, destination, reason, and whether values were sent to a model. It does not contain the medical appointment itself.
+
+Deletion is equally honest. QuietBridge revokes the handoff, deletes local state, and reports the connector outcome separately instead of claiming that every downstream copy disappeared.
+
+Now the identity signal becomes unknown. The same request is blocked, and no private handoff is created. Unknown classifications and missing identity fail closed.
+
+QuietBridge is designed as a reusable layer, not a single Alexa demo. Any calendar, health, commerce, or account system can implement the connector contract, while Alexa Plus or another MCP client uses the same five tools.
+
+The repository includes strict TypeScript, complexity limits, signed production authentication, encrypted local handoff storage, origin and host validation, rate and body limits, container packaging, eighty-seven automated tests, four browser flows, eighty-eight point five percent statement coverage, zero serious or critical accessibility findings, and zero production dependency vulnerabilities.
+
+QuietBridge makes privacy a visible, testable delivery decision before an assistant speaks.
