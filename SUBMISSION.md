@@ -112,9 +112,9 @@ technical boundary that keeps sensitive results useful without speaking them to 
 
 Required fields to complete after publishing:
 
-- Contribution URL: `<PUBLIC_GITHUB_REPOSITORY_URL>`
-- Project repository URL: `<PUBLIC_GITHUB_REPOSITORY_URL>`
-- GitHub username: `<GITHUB_USERNAME>`
+- Contribution URL: `https://github.com/dlc04022006-stack/quietbridge`
+- Project repository URL: `https://github.com/dlc04022006-stack/quietbridge`
+- GitHub username: `dlc04022006-stack`
 
 ## Product feedback
 
