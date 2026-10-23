@@ -1,0 +1,57 @@
+{
+  "name": "quietbridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A context-aware privacy control plane for Alexa+ shared-space experiences.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n mcp,ui -c green,cyan \"npm:dev:mcp\" \"npm:dev:ui\"",
+    "dev:mcp": "tsx apps/mcp-server/src/index.ts",
+    "dev:ui": "vite --config apps/simulator/vite.config.ts",
+    "start": "tsx apps/mcp-server/src/index.ts",
+    "start:prod": "node dist-server/apps/mcp-server/src/index.js",
+    "build": "npm run build:ui && npm run build:server",
+    "build:ui": "vite build --config apps/simulator/vite.config.ts",
+    "build:server": "tsc --project tsconfig.build.json",
+    "lint": "biome lint . --max-diagnostics=100",
+    "metrics": "node scripts/check-code-metrics.mjs",
+    "security:secrets": "node scripts/scan-secrets.mjs",
+    "security:audit": "npm audit --omit=dev --audit-level=high",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:watch": "vitest",
+    "quality": "npm run lint && npm run metrics && npm run security:secrets && npm run typecheck && npm run test:coverage && npm run build && npm run security:audit",
+    "verify": "npm run lint && npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1156.0",
+    "@aws-sdk/client-verifiedpermissions": "^3.1156.0",
+    "@modelcontextprotocol/client": "2.3.1",
+    "@modelcontextprotocol/node": "2.1.1",
+    "@modelcontextprotocol/server": "2.3.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@biomejs/biome": "^2.6.2",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "concurrently": "^10.0.6",
+    "fast-check": "4.10.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "5.0.5"
+  }
+}
